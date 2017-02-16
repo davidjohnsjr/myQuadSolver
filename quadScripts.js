@@ -64,9 +64,9 @@ function QF() {
   // context.clearRect(0,0,w,h);
   // grid();
   //results();
-  
+  $("#answers").hide();
+  $("#answers").fadeIn(1500);
   resetCanvas();
-  solutions();
 }  // close QF
 
 function results() {
@@ -86,8 +86,7 @@ function results() {
 
 function solutions() {
   // qudratic formula
-  $("#answers").hide();
-  $("#answers").fadeIn(1500);
+
   d = Math.pow(b*1,2)-4*a*c;
   if (d<0) {
     $("#solution1").text("The solutions are imaginary (no x-intercepts).");
@@ -148,9 +147,10 @@ function zoomIn() {
 }  // end zoomIN
 
 function zoomOut() {
-
-    k = k - 2;
-    resetCanvas();
+    if (k>5) {
+      k = k - 2;
+      resetCanvas();
+    }
 }  // end zoomOut
 
 function resetCanvas() {
@@ -158,6 +158,7 @@ function resetCanvas() {
   grid();
   graphQuad();
   results();
+  solutions();
 }// end resetCanvas
 
 function doMouseMove(event) {
